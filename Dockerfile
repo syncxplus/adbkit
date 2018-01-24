@@ -76,10 +76,10 @@ RUN apk add --no-cache tzdata \
     && apk del tzdata
 
 WORKDIR /app
-ADD lib /app
-ADD index.js /app
-ADD devices.js /app
-ADD package.json /app
+COPY lib /app/lib
+COPY index.js /app
+COPY devices.js /app
+COPY package.json /app
 RUN npm i
 COPY socket.js /app/node_modules/adbkit/lib/adb/tcpusb/socket.js
 CMD ["node", "."]
